@@ -5,3 +5,4 @@ Ce dépôt contient la conception fonctionnelle et technique de l'application pr
 ## Documentation
 
 - [Architecture fonctionnelle et technique — AGRIECO PRO](ARCHITECTURE_AGRIECO_PRO.md)
+- [Décisions produit V1 — AGRIECO PRO](DECISIONS_PRODUIT_V1_AGRIECO_PRO.md)
