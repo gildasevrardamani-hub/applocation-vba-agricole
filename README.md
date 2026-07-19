@@ -1,1 +1,7 @@
 # applocation-vba-agricole
+
+Ce dépôt contient la conception fonctionnelle et technique de l'application professionnelle **AGRIECO PRO**, un outil Excel/VBA d'aide à la décision technico-économique pour les exploitations agricoles et d'élevage.
+
+## Documentation
+
+- [Architecture fonctionnelle et technique — AGRIECO PRO](ARCHITECTURE_AGRIECO_PRO.md)
