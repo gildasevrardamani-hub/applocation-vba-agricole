@@ -449,41 +449,46 @@ La priorité est de fiabiliser les calculs économiques et les processus métier
 
 # 5. Décisions sur les utilisateurs prioritaires
 
-## 5.1 Cible principale
+## 5.1 Cibles principales
 
 ### Décision retenue
 
-La cible principale de la V1 est constituée des :
+Les cibles principales de la V1 sont :
 
+- entrepreneurs agricoles ;
+- producteurs agricoles structurés ;
 - conseillers agricoles ;
-- techniciens agricoles ;
-- agents d'encadrement.
+- techniciens agricoles et agents d'encadrement.
 
 ### Justification
 
-Ces profils sont les plus susceptibles de collecter les données, accompagner les producteurs, interpréter les résultats et utiliser les rapports comme supports de décision.
+AGRIECO PRO doit être à la fois un outil personnel de gestion, de planification et d'aide à la décision pour un entrepreneur agricole, et un outil professionnel d'accompagnement pour les conseillers et agents d'encadrement. Cette orientation élargit l'utilité du produit sans changer le moteur économique.
 
 ### Conséquences fonctionnelles
 
-- Les formulaires doivent être conçus pour une saisie professionnelle et répétée.
-- Les rapports doivent être utiles pour restituer les résultats à un producteur ou une organisation.
-- Le vocabulaire doit être compréhensible par des techniciens agricoles.
+- Prévoir un **mode individuel** pour gérer sa propre exploitation, ses parcelles, ses projets, ses campagnes, ses dépenses, ses récoltes, ses ventes, sa trésorerie, ses dettes, ses créances, ses stocks, ses objectifs, ses simulations et ses recommandations.
+- Prévoir un **mode conseiller ou organisation** pour gérer plusieurs producteurs, plusieurs exploitations, consolider les résultats, comparer des bénéficiaires, produire des statistiques et éditer des rapports professionnels.
+- Permettre deux niveaux de saisie : saisie simplifiée et saisie détaillée.
+- Adapter les menus, tableaux de bord et rapports au profil sans dupliquer les règles de calcul.
 
 ### Conséquences techniques
 
-- Prévoir des listes de producteurs et d'exploitations permettant le suivi d'un portefeuille.
-- Prévoir des filtres par conseiller, zone, campagne et spéculation.
-- Préparer un futur mode multi-utilisateur, même si la V1 est locale.
+- Le moteur économique doit rester commun aux deux modes.
+- La différence entre les modes doit concerner principalement les parcours utilisateurs, menus, tableaux de bord, droits d'accès, rapports, niveau de complexité d'interface et volume de producteurs ou exploitations gérés.
+- Prévoir dans les tables des champs permettant de distinguer un usage individuel d'un usage organisationnel sans modifier les formules.
+- Préparer un paramètre de profil d'utilisation : `Individuel`, `Conseiller`, `Organisation` ou équivalent.
 
 ### Risques éventuels
 
-- Les producteurs individuels peuvent trouver l'interface trop technique.
-- Les conseillers peuvent avoir des méthodes de calcul différentes selon les organisations.
+- Risque de surcharge fonctionnelle si la V1 tente de satisfaire tous les profils avec le même niveau de détail.
+- Risque d'interface trop complexe pour un entrepreneur agricole peu formé à la gestion.
+- Risque de confusion si les tableaux de bord individuels et institutionnels ne sont pas séparés clairement.
 
 ### Points restant à confirmer
 
-- Nombre moyen de producteurs suivis par un conseiller.
-- Niveau de formation informatique des utilisateurs principaux.
+- Profil à privilégier lors des premiers tests utilisateurs.
+- Niveau minimal de gestion des dettes, créances et stocks en mode individuel V1.
+- Niveau de consolidation attendu en mode organisation V1.
 
 ## 5.2 Cibles secondaires
 
@@ -493,10 +498,13 @@ Les cibles secondaires sont :
 
 - coopératives ;
 - organisations professionnelles agricoles ;
-- projets et ONG ;
+- cabinets de conseil ;
+- ONG ;
+- projets de développement ;
 - institutions financières ;
-- producteurs agricoles structurés ;
-- établissements de formation.
+- investisseurs agricoles ;
+- centres de formation ;
+- grandes institutions agricoles.
 
 ### Justification
 
@@ -522,6 +530,178 @@ Ces acteurs ont des besoins complémentaires : consolidation, financement, forma
 
 - Priorité relative des cibles secondaires.
 - Rapports spécifiques attendus par les institutions financières ou projets.
+
+## 5.3 Double mode d'utilisation : individuel et conseiller/organisation
+
+### Décision retenue
+
+AGRIECO PRO doit répondre à deux usages principaux :
+
+1. **Mode individuel** : destiné à un entrepreneur agricole ou producteur structuré qui utilise le logiciel pour gérer sa propre activité.
+2. **Mode conseiller ou organisation** : destiné à un conseiller, cabinet, coopérative, ONG, projet ou institution qui accompagne plusieurs producteurs ou exploitations.
+
+### Justification
+
+Les entrepreneurs agricoles ont besoin d'un outil personnel de pilotage, tandis que les organisations ont besoin d'un outil de suivi, consolidation et reporting. Les deux usages reposent sur les mêmes calculs économiques ; il faut donc éviter deux produits séparés.
+
+### Conséquences fonctionnelles
+
+Le mode individuel devra couvrir les fonctions suivantes :
+
+- tableau de bord personnel ;
+- module « Mon projet agricole » ;
+- compte d'exploitation prévisionnel ;
+- compte d'exploitation réel ;
+- comparaison prévision/réalisation ;
+- suivi des écarts ;
+- planification de campagne ;
+- journal des opérations ;
+- suivi des dépenses payées ;
+- suivi des dépenses restant à payer ;
+- suivi des achats à crédit ;
+- suivi des dettes fournisseurs ;
+- suivi des ventes encaissées ;
+- suivi des créances clients ;
+- gestion des stocks d'intrants ;
+- gestion des stocks de produits agricoles ;
+- suivi de la trésorerie ;
+- suivi des objectifs de production ;
+- suivi des objectifs financiers ;
+- estimation du besoin de financement ;
+- simulation du prix, du rendement, de la superficie et des charges ;
+- aide à la décision pour développer, maintenir, réduire ou abandonner une activité.
+
+Le mode conseiller ou organisation devra couvrir :
+
+- gestion de plusieurs producteurs ;
+- gestion de plusieurs exploitations ;
+- consolidation des résultats ;
+- comparaisons entre bénéficiaires ;
+- statistiques ;
+- rapports professionnels et institutionnels.
+
+### Conséquences techniques
+
+- Un seul moteur de calcul doit servir les deux modes.
+- Les menus et tableaux de bord doivent être configurables selon le mode.
+- Les droits d'accès doivent permettre de limiter un entrepreneur à ses propres données et une organisation à son portefeuille.
+- Les rapports doivent partager les mêmes indicateurs mais présenter des niveaux d'agrégation différents.
+
+### Risques éventuels
+
+- Risque de glissement vers un logiciel de comptabilité complet si dettes, créances et trésorerie sont trop détaillées en V1.
+- Risque de surcharge des écrans si les fonctions organisationnelles apparaissent dans le mode individuel.
+- Risque de performance si une organisation gère trop de producteurs dans un seul classeur Excel.
+
+### Points restant à confirmer
+
+- Limites fonctionnelles de la gestion des dettes et créances en V1.
+- Profondeur du journal des opérations : simple suivi agricole ou journal quasi-comptable.
+- Capacité maximale par mode : nombre de producteurs, exploitations, activités et lignes de flux.
+
+## 5.4 Organisation simplifiée du mode individuel
+
+### Décision retenue
+
+Le mode individuel doit prévoir une organisation fonctionnelle simple autour des rubriques suivantes, sans que cette liste implique encore la création de feuilles Excel ou de UserForms :
+
+- Mon exploitation ;
+- Mes parcelles ;
+- Mes activités ;
+- Mon projet agricole ;
+- Mes dépenses ;
+- Mes récoltes ;
+- Mes ventes ;
+- Mes stocks ;
+- Ma trésorerie ;
+- Mes résultats ;
+- Mes simulations ;
+- Mes objectifs ;
+- Mes rapports.
+
+### Justification
+
+Ces rubriques utilisent un vocabulaire personnel et concret, mieux adapté à un entrepreneur agricole qu'une terminologie institutionnelle.
+
+### Conséquences fonctionnelles
+
+- Le parcours individuel doit être orienté action et décision.
+- Le tableau de bord personnel doit afficher les objectifs, dépenses, ventes, trésorerie, résultats et alertes de l'utilisateur.
+- Les rubriques institutionnelles doivent être masquées ou simplifiées en mode individuel.
+
+### Conséquences techniques
+
+- Prévoir une couche de navigation configurable par profil.
+- Ne pas créer de tables séparées pour le mode individuel si les mêmes entités métier suffisent.
+- Prévoir des libellés d'interface distincts sans dupliquer les calculs.
+
+### Risques éventuels
+
+- Des rubriques trop nombreuses peuvent alourdir la V1.
+- Les objectifs et simulations peuvent demander des règles supplémentaires si leur périmètre n'est pas borné.
+
+### Points restant à confirmer
+
+- Rubriques à retenir dans la toute première version utilisable.
+- Présentation du tableau de bord personnel.
+
+## 5.5 Niveaux de saisie
+
+### Décision retenue
+
+AGRIECO PRO doit prévoir deux niveaux d'utilisation :
+
+1. **Saisie simplifiée**, pour obtenir rapidement une analyse avec peu de données.
+2. **Saisie détaillée**, pour les entrepreneurs expérimentés et les professionnels.
+
+### Justification
+
+Tous les utilisateurs n'ont pas le même niveau de maîtrise en gestion. La saisie simplifiée réduit la barrière d'entrée, tandis que la saisie détaillée garantit une analyse complète lorsque les données sont disponibles.
+
+### Conséquences fonctionnelles
+
+La saisie simplifiée doit couvrir :
+
+- activité ;
+- superficie ou effectif ;
+- rendement attendu ;
+- prix de vente ;
+- principales charges ;
+- nombre de cycles ;
+- durée du cycle.
+
+La saisie détaillée peut intégrer :
+
+- opérations par date ;
+- charges détaillées ;
+- main-d'œuvre familiale et salariée ;
+- amortissements ;
+- investissements ;
+- crédits ;
+- dettes ;
+- créances ;
+- stocks ;
+- pertes ;
+- récoltes multiples ;
+- ventes multiples ;
+- flux de trésorerie.
+
+### Conséquences techniques
+
+- Les calculs doivent accepter des comptes simplifiés avec un Indice de Qualité des Données plus faible.
+- Le niveau de saisie doit être enregistré pour interpréter correctement les résultats.
+- Les données manquantes en saisie simplifiée doivent être soit estimées à partir de référentiels, soit signalées dans les rapports.
+
+### Risques éventuels
+
+- Les résultats issus d'une saisie simplifiée peuvent être moins précis.
+- Les utilisateurs peuvent comparer des comptes simplifiés et détaillés sans tenir compte de la qualité des données.
+
+### Points restant à confirmer
+
+- Champs strictement obligatoires en saisie simplifiée.
+- Méthode d'estimation par défaut des charges non saisies.
+- Seuil minimal d'IQD acceptable pour afficher une recommandation.
 
 ---
 
@@ -1825,8 +2005,9 @@ Les décisions suivantes sont considérées comme arrêtées pour la V1 :
 
 ## 11.3 Utilisateurs
 
-- Cible principale : conseillers agricoles, techniciens agricoles, agents d'encadrement.
-- Cibles secondaires : coopératives, organisations professionnelles agricoles, projets et ONG, institutions financières, producteurs structurés, établissements de formation.
+- Cibles principales : entrepreneurs agricoles, producteurs agricoles structurés, conseillers agricoles, techniciens agricoles et agents d'encadrement.
+- Cibles secondaires : coopératives, organisations professionnelles agricoles, cabinets de conseil, ONG, projets de développement, institutions financières, investisseurs agricoles, centres de formation et grandes institutions agricoles.
+- Deux modes d'utilisation : mode individuel et mode conseiller/organisation, avec moteur économique commun.
 
 ## 11.4 Spéculations pilotes
 

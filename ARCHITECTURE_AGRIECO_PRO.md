@@ -2,7 +2,7 @@
 
 ## 1. Vision générale
 
-AGRIECO PRO est une application professionnelle d'aide à la décision technico-économique pour l'analyse des exploitations agricoles et d'élevage. La première version est prévue sous Microsoft Excel avec VBA, interface graphique professionnelle et base de données interne Excel, tout en conservant une architecture évolutive vers Android, Web et SQL.
+AGRIECO PRO est une application professionnelle et personnelle d'aide à la décision technico-économique pour l'analyse, la gestion et la planification des exploitations agricoles et d'élevage. La première version est prévue sous Microsoft Excel avec VBA, interface graphique professionnelle et base de données interne Excel, tout en conservant une architecture évolutive vers Android, Web et SQL.
 
 ### 1.1 Objectifs métier
 
@@ -14,7 +14,7 @@ L'application doit permettre de :
 - mesurer la rentabilité économique par spéculation, producteur, exploitation et campagne ;
 - comparer plusieurs spéculations agricoles et d'élevage ;
 - classer les activités selon leur performance économique ;
-- fournir une aide structurée à la prise de décision pour les producteurs, conseillers, coopératives, ONG, projets de développement, institutions financières et centres de formation.
+- fournir une aide structurée à la prise de décision pour les entrepreneurs agricoles, producteurs structurés, conseillers, coopératives, cabinets de conseil, ONG, projets de développement, institutions financières, investisseurs agricoles et centres de formation.
 
 ### 1.2 Principes d'architecture
 
@@ -23,6 +23,15 @@ L'application doit permettre de :
 - **Paramétrage** : les cultures, élevages, unités, types de charges, coefficients, risques et licences doivent être administrables sans modifier le code.
 - **Évolutivité** : les feuilles Excel jouent le rôle de tables normalisées afin de préparer une future migration SQL.
 - **Contrôle qualité** : validations de données, journal des erreurs, journal des actions sensibles et verrouillage des formules critiques.
+
+### 1.3 Modes d'utilisation
+
+AGRIECO PRO doit être conçu autour de deux modes d'utilisation qui partagent le même moteur économique :
+
+1. **Mode individuel** : pour un entrepreneur agricole ou producteur structuré qui gère sa propre exploitation, ses parcelles, ses activités, ses dépenses, ses récoltes, ses ventes, ses stocks, sa trésorerie, ses objectifs, ses simulations et ses décisions.
+2. **Mode conseiller ou organisation** : pour un conseiller, cabinet, coopérative, ONG, projet, institution financière ou grande institution agricole qui suit plusieurs producteurs ou exploitations, consolide les résultats, compare des bénéficiaires et produit des statistiques ou rapports institutionnels.
+
+La différence entre les modes doit porter sur les parcours utilisateurs, menus, tableaux de bord, droits d'accès, rapports, niveau de complexité de l'interface et volume de producteurs ou exploitations gérés. Elle ne doit pas conduire à deux moteurs de calcul différents.
 
 ## 2. Architecture applicative cible
 

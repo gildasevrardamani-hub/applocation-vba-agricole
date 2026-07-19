@@ -397,6 +397,72 @@ Résultat économique = (800 000 + 100 000) - (500 000 + 150 000) = 250 000 FCFA
 
 Cette distinction affecte produit brut, charges, marges, résultats, trésorerie, IPE et rapports.
 
+## 1.7 Moteur économique commun aux modes individuel et organisation
+
+### Définition
+
+AGRIECO PRO doit utiliser un moteur économique unique pour le mode individuel et le mode conseiller ou organisation. Les règles de calcul ne changent pas selon le profil utilisateur ; seuls changent le parcours, le niveau de détail, les agrégations et la présentation.
+
+### Objectif
+
+Garantir que le même compte d'exploitation produit les mêmes résultats, qu'il soit saisi par un entrepreneur agricole pour son exploitation ou par un conseiller pour un producteur accompagné.
+
+### Variables utilisées
+
+- Mode d'utilisation : individuel, conseiller ou organisation.
+- Niveau de saisie : simplifié ou détaillé.
+- Périmètre d'analyse : activité personnelle, producteur, exploitation, portefeuille ou organisation.
+- Données économiques communes : charges, produits, stocks, trésorerie, investissements, dettes, créances, cycles et objectifs.
+
+### Formule mathématique
+
+```text
+Résultat économique = Fonction commune(Données économiques, Paramètres de calcul)
+Présentation = Fonction d'affichage(Résultat économique, Mode utilisateur, Niveau de détail)
+```
+
+### Explication détaillée
+
+Le mode individuel peut afficher « Mes dépenses », « Mes ventes » ou « Ma trésorerie ». Le mode organisation peut afficher « Dépenses des bénéficiaires », « Ventes consolidées » ou « Statistiques par zone ». Ces libellés et agrégations ne doivent pas modifier les formules de produit brut, charges, marge, trésorerie, rentabilité, IPE ou IQD.
+
+### Exemple numérique complet
+
+Un entrepreneur agricole saisit pour la tomate :
+
+```text
+Produit brut = 1 200 000 FCFA
+Charges économiques = 850 000 FCFA
+Résultat économique = 350 000 FCFA
+```
+
+Un conseiller saisit exactement les mêmes données pour un producteur accompagné. Le résultat doit rester :
+
+```text
+Résultat économique = 1 200 000 - 850 000 = 350 000 FCFA
+```
+
+La différence porte uniquement sur le rapport : personnel pour l'entrepreneur, consolidable pour l'organisation.
+
+### Cas particuliers
+
+- En saisie simplifiée, certaines données peuvent être estimées par référentiel ; l'IQD doit alors signaler une précision moindre.
+- En mode organisation, les résultats peuvent être agrégés par producteur, zone, conseiller, campagne ou spéculation.
+
+### Règles de validation
+
+- Les formules ne doivent jamais dépendre du mode utilisateur.
+- Les agrégations organisationnelles doivent provenir de résultats individuels déjà calculés et traçables.
+- Les comptes simplifiés et détaillés doivent indiquer leur niveau de saisie.
+
+### Cas d'erreur
+
+- Deux résultats différents pour les mêmes données sources et paramètres : erreur critique de reproductibilité.
+- Comparaison de comptes simplifiés et détaillés sans indication IQD : alerte de qualité.
+
+### Impact sur les autres indicateurs
+
+Cette règle impacte tous les indicateurs, notamment les tableaux de bord personnels, les consolidations organisationnelles, les simulations, l'IPE, l'IQD et les rapports.
+
 ---
 
 # 2. Gestion des quantités
@@ -4019,7 +4085,9 @@ Générer des commentaires, points forts, points faibles et recommandations à p
 
 ### Définition
 
-AGRIECO PRO modélise l'exploitation agricole selon la chaîne métier suivante :
+AGRIECO PRO modélise l'exploitation agricole selon une chaîne métier commune au mode individuel et au mode conseiller/organisation. En mode individuel, le producteur voit cette chaîne comme son propre parcours de gestion ; en mode organisation, elle devient la base de suivi et de consolidation de plusieurs producteurs.
+
+La chaîne métier de référence est la suivante :
 
 ```text
 Producteur
@@ -4178,6 +4246,62 @@ Interprétation : données de bonne qualité, mais résultats à commenter.
 ### Impact sur les autres indicateurs
 
 L'IQD n'entre pas directement dans le produit brut ou les marges, mais influence la confiance, les alertes, le diagnostic et la décision.
+
+## 16.2 Effet du niveau de saisie sur l'IQD
+
+### Définition
+
+Le niveau de saisie indique si le compte a été établi avec un jeu minimal de données ou avec une description complète des opérations, flux, stocks, dettes, créances et trésorerie.
+
+### Objectif
+
+Permettre à l'entrepreneur agricole d'obtenir rapidement une première analyse tout en signalant que les résultats simplifiés sont moins précis qu'une saisie détaillée.
+
+### Variables utilisées
+
+- Niveau de saisie : simplifié ou détaillé.
+- Nombre de données estimées par référentiel.
+- Nombre de rubriques non détaillées.
+- Présence ou absence de flux de trésorerie datés.
+
+### Formule mathématique
+
+```text
+IQD ajusté = IQD de base - Pénalité niveau simplifié - Pénalités estimations supplémentaires
+```
+
+### Explication détaillée
+
+La saisie simplifiée peut suffire pour une décision rapide, mais elle ne doit pas donner la même confiance qu'un compte détaillé. Les rapports doivent donc afficher le niveau de saisie et le score IQD.
+
+### Exemple numérique complet
+
+```text
+IQD de base après contrôles = 88 %
+Pénalité saisie simplifiée = 8 points
+Pénalité charges estimées = 5 points
+IQD ajusté = 88 - 8 - 5 = 75 %
+```
+
+### Cas particuliers
+
+- Si toutes les données simplifiées obligatoires sont renseignées mais que les charges secondaires sont estimées, le compte peut rester exploitable avec avertissement.
+- Un compte détaillé peut avoir un mauvais IQD si ses données sont incohérentes.
+
+### Règles de validation
+
+- Le niveau de saisie doit être enregistré.
+- Les données estimées doivent être identifiées.
+- Les recommandations automatiques doivent tenir compte de l'IQD.
+
+### Cas d'erreur
+
+- Niveau de saisie inconnu : alerte de qualité.
+- Recommandation forte produite avec IQD inférieur au seuil minimal : alerte ou blocage selon paramètre.
+
+### Impact sur les autres indicateurs
+
+Impact sur rapports, recommandations, comparaisons et assistant de diagnostic.
 
 ## 16.2 Données obligatoires, estimées et incohérences
 
