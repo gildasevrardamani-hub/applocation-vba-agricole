@@ -1,19 +1,20 @@
 VERSION 5.00
-Begin VB.UserForm frmProducteur 
+Object = "{0D452EE1-E08F-101A-852E-02608C4D0BB4}#2.0#0"; "FM20.DLL"
+Begin {C62A69F0-16A6-11CE-9E98-00AA00574A4F} frmProducteur
    Caption         =   "AGRIECO PRO - Gestion des producteurs"
    ClientHeight    =   7200
    ClientLeft      =   120
    ClientTop       =   465
    ClientWidth     =   9300
    StartUpPosition =   1  'CenterOwner
-   Begin MSForms.TextBox txtRecherche 
+   Begin MSForms.TextBox txtRecherche
       Height          =   300
       Left            =   120
       TabIndex        =   0
       Top             =   300
       Width           =   3000
    End
-   Begin MSForms.CommandButton cmdRechercher 
+   Begin MSForms.CommandButton cmdRechercher
       Caption         =   "Rechercher"
       Height          =   330
       Left            =   3240
@@ -21,14 +22,14 @@ Begin VB.UserForm frmProducteur
       Top             =   285
       Width           =   1200
    End
-   Begin MSForms.ListBox lstProducteurs 
+   Begin MSForms.ListBox lstProducteurs
       Height          =   2400
       Left            =   120
       TabIndex        =   2
       Top             =   780
       Width           =   9000
    End
-   Begin MSForms.TextBox txtProducteurID 
+   Begin MSForms.TextBox txtProducteurID
       Height          =   300
       Left            =   1800
       Locked          =   -1  'True
@@ -36,49 +37,49 @@ Begin VB.UserForm frmProducteur
       Top             =   3480
       Width           =   3000
    End
-   Begin MSForms.TextBox txtOrganisationID 
+   Begin MSForms.TextBox txtOrganisationID
       Height          =   300
       Left            =   1800
       TabIndex        =   4
       Top             =   3900
       Width           =   3000
    End
-   Begin MSForms.TextBox txtCodeProducteur 
+   Begin MSForms.TextBox txtCodeProducteur
       Height          =   300
       Left            =   1800
       TabIndex        =   5
       Top             =   4320
       Width           =   3000
    End
-   Begin MSForms.TextBox txtNomProducteur 
+   Begin MSForms.TextBox txtNomProducteur
       Height          =   300
       Left            =   1800
       TabIndex        =   6
       Top             =   4740
       Width           =   3000
    End
-   Begin MSForms.TextBox txtContact 
+   Begin MSForms.TextBox txtContact
       Height          =   300
       Left            =   6120
       TabIndex        =   7
       Top             =   3480
       Width           =   3000
    End
-   Begin MSForms.TextBox txtLocalisation 
+   Begin MSForms.TextBox txtLocalisation
       Height          =   300
       Left            =   6120
       TabIndex        =   8
       Top             =   3900
       Width           =   3000
    End
-   Begin MSForms.ComboBox cboTypeProducteur 
+   Begin MSForms.ComboBox cboTypeProducteur
       Height          =   300
       Left            =   6120
       TabIndex        =   9
       Top             =   4320
       Width           =   3000
    End
-   Begin MSForms.CheckBox chkActif 
+   Begin MSForms.CheckBox chkActif
       Caption         =   "Actif"
       Height          =   300
       Left            =   6120
@@ -86,7 +87,7 @@ Begin VB.UserForm frmProducteur
       Top             =   4740
       Width           =   1000
    End
-   Begin MSForms.CommandButton cmdNouveau 
+   Begin MSForms.CommandButton cmdNouveau
       Caption         =   "Nouveau"
       Height          =   360
       Left            =   120
@@ -94,7 +95,7 @@ Begin VB.UserForm frmProducteur
       Top             =   6360
       Width           =   1200
    End
-   Begin MSForms.CommandButton cmdEnregistrer 
+   Begin MSForms.CommandButton cmdEnregistrer
       Caption         =   "Enregistrer"
       Height          =   360
       Left            =   1440
@@ -102,7 +103,7 @@ Begin VB.UserForm frmProducteur
       Top             =   6360
       Width           =   1200
    End
-   Begin MSForms.CommandButton cmdModifier 
+   Begin MSForms.CommandButton cmdModifier
       Caption         =   "Modifier"
       Height          =   360
       Left            =   2760
@@ -110,7 +111,7 @@ Begin VB.UserForm frmProducteur
       Top             =   6360
       Width           =   1200
    End
-   Begin MSForms.CommandButton cmdSupprimer 
+   Begin MSForms.CommandButton cmdSupprimer
       Caption         =   "Supprimer"
       Height          =   360
       Left            =   4080
@@ -118,7 +119,7 @@ Begin VB.UserForm frmProducteur
       Top             =   6360
       Width           =   1200
    End
-   Begin MSForms.CommandButton cmdFermer 
+   Begin MSForms.CommandButton cmdFermer
       Caption         =   "Fermer"
       Height          =   360
       Left            =   7920
@@ -126,49 +127,49 @@ Begin VB.UserForm frmProducteur
       Top             =   6360
       Width           =   1200
    End
-   Begin MSForms.Label lblProducteurID 
+   Begin MSForms.Label lblProducteurID
       Caption         =   "Identifiant"
       Height          =   240
       Left            =   120
       Top             =   3540
       Width           =   1500
    End
-   Begin MSForms.Label lblOrganisationID 
+   Begin MSForms.Label lblOrganisationID
       Caption         =   "Organisation"
       Height          =   240
       Left            =   120
       Top             =   3960
       Width           =   1500
    End
-   Begin MSForms.Label lblCodeProducteur 
+   Begin MSForms.Label lblCodeProducteur
       Caption         =   "Code"
       Height          =   240
       Left            =   120
       Top             =   4380
       Width           =   1500
    End
-   Begin MSForms.Label lblNomProducteur 
+   Begin MSForms.Label lblNomProducteur
       Caption         =   "Nom *"
       Height          =   240
       Left            =   120
       Top             =   4800
       Width           =   1500
    End
-   Begin MSForms.Label lblContact 
+   Begin MSForms.Label lblContact
       Caption         =   "Contact"
       Height          =   240
       Left            =   5040
       Top             =   3540
       Width           =   1000
    End
-   Begin MSForms.Label lblLocalisation 
+   Begin MSForms.Label lblLocalisation
       Caption         =   "Localisation *"
       Height          =   240
       Left            =   5040
       Top             =   3960
       Width           =   1200
    End
-   Begin MSForms.Label lblTypeProducteur 
+   Begin MSForms.Label lblTypeProducteur
       Caption         =   "Type *"
       Height          =   240
       Left            =   5040
