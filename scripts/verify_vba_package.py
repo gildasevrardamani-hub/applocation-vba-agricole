@@ -114,7 +114,23 @@ IMPORT_ORDER = [
     "frmExploitation.frm",
 ]
 
-PROC_RE = re.compile(r"^\s*(?:Public|Private)\s+(?:Sub|Function)\s+([A-Za-z_][A-Za-z0-9_]*)", re.IGNORECASE | re.MULTILINE)
+PROC_RE = re.compile(
+    r"^\s*(?:Public|Private)\s+(?:Sub|Function)\s+([A-Za-z_][A-Za-z0-9_]*)",
+    re.IGNORECASE | re.MULTILINE,
+)
+USERFORM_OBJECT = 'Object = "{0D452EE1-E08F-101A-852E-02608C4D0BB4}#2.0#0"; "FM20.DLL"'
+USERFORM_BEGIN_RE = re.compile(
+    r"^Begin\s+\{C62A69F0-16A6-11CE-9E98-00AA00574A4F\}\s+([A-Za-z_][A-Za-z0-9_]*)\s*$",
+    re.MULTILINE,
+)
+CONTROL_RE = re.compile(
+    r"^\s*Begin\s+MSForms\.[A-Za-z0-9_]+\s+([A-Za-z_][A-Za-z0-9_]*)\s*$",
+    re.MULTILINE,
+)
+EVENT_RE = re.compile(
+    r"^\s*Private\s+Sub\s+([A-Za-z_][A-Za-z0-9_]*)_(?:Click|Change|Initialize|DblClick|Enter|Exit|KeyDown|KeyPress|KeyUp)\s*\(",
+    re.IGNORECASE | re.MULTILINE,
+)
 
 
 def read_vba_files() -> dict[str, str]:
@@ -128,6 +144,33 @@ def collect_procedures(files: dict[str, str]) -> set[str]:
     for content in files.values():
         procedures.update(match.group(1) for match in PROC_RE.finditer(content))
     return procedures
+
+
+def validate_userforms(files: dict[str, str], errors: list[str]) -> None:
+    for filename in ["frmProducteur.frm", "frmExploitation.frm"]:
+        content = files.get(filename, "")
+        if not content:
+            continue
+
+        if "Begin VB.UserForm" in content:
+            errors.append(
+                f"UserForm invalide importe comme module standard : {filename} contient Begin VB.UserForm"
+            )
+
+        if USERFORM_OBJECT not in content or not USERFORM_BEGIN_RE.search(content):
+            errors.append(f"UserForm sans en-tete MSForms/FM20.DLL valide : {filename}")
+
+        declared_controls = set(CONTROL_RE.findall(content))
+        for source in EVENT_RE.findall(content):
+            if source.lower() == "userform":
+                continue
+            if source not in declared_controls:
+                errors.append(
+                    f"Evenement rattache a un controle non declare : {filename} -> {source}"
+                )
+
+        if re.search(r"OleObjectBlob|Picture\s*=|Icon\s*=|\.frx", content, re.IGNORECASE):
+            errors.append(f"Dependance binaire .frx probable a verifier : {filename}")
 
 
 def main() -> int:
@@ -153,10 +196,7 @@ def main() -> int:
             if call not in content and call not in procedures:
                 errors.append(f"Appel formulaire non resolu : {filename} -> {call}")
 
-    for filename in ["frmProducteur.frm", "frmExploitation.frm"]:
-        content = files.get(filename, "")
-        if re.search(r"OleObjectBlob|Picture\s*=|Icon\s*=|\.frx", content, re.IGNORECASE):
-            errors.append(f"Dependance binaire .frx probable a verifier : {filename}")
+    validate_userforms(files, errors)
 
     print("Ordre recommande d'import VBA :")
     for index, filename in enumerate(IMPORT_ORDER, 1):
