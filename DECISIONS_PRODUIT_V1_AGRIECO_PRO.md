@@ -1,11 +1,5 @@
 # Décisions produit V1 — AGRIECO PRO
 
-## Statut de validation
-
-Ce document est **validé comme document officiel de cadrage de la V1**. Les décisions relatives à l'intégration des entrepreneurs agricoles comme cible principale, aux deux modes d'utilisation, au moteur économique unique, aux profils utilisateurs et à l'impact sur l'IQD sont approuvées.
-
-Les questions restant à arbitrer seront traitées progressivement lors de la conception détaillée des règles de calcul et de la préparation de la V1. Elles ne doivent pas entraîner de dérive de périmètre : la priorité est de stabiliser l'architecture fonctionnelle avant d'ajouter de nouvelles fonctionnalités.
-
 ## 1. Objet du document
 
 Ce document formalise les décisions produit, métier, économiques, fonctionnelles et techniques retenues pour la version 1 d'**AGRIECO PRO** avant tout développement VBA.

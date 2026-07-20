@@ -2,13 +2,9 @@
 
 ## Statut du document
 
-Ce document est le manuel officiel des règles métier et des règles de calcul d'AGRIECO PRO. Il constitue la référence commune qui devra guider les futures implémentations Excel/VBA, Windows, Android, Web ou SQL.
-
-Il prépare le futur moteur économique, mais ne contient aucun code VBA, aucun UserForm, aucun classeur Excel et aucune implémentation technique.
+Ce document est le manuel officiel des règles de calcul d'AGRIECO PRO. Il prépare le futur moteur économique, mais ne contient aucun code VBA, aucun UserForm, aucun classeur Excel et aucune implémentation technique.
 
 Le document n'est pas limité à la V1. Les règles indispensables à la première version sont indiquées comme **V1**. Les règles utiles pour l'architecture évolutive, mais non obligatoires dans la première version, sont indiquées comme **préparées pour versions futures**.
-
-La priorité de ce manuel est la stabilisation de l'architecture fonctionnelle et économique. Toute nouvelle fonctionnalité doit être explicitement arbitrée afin d'éviter le scope creep.
 
 ## Convention de description d'une règle
 
@@ -4307,7 +4303,7 @@ IQD ajusté = 88 - 8 - 5 = 75 %
 
 Impact sur rapports, recommandations, comparaisons et assistant de diagnostic.
 
-## 16.3 Données obligatoires, estimées et incohérences
+## 16.2 Données obligatoires, estimées et incohérences
 
 ### Définition
 
